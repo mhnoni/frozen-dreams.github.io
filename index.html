@@ -45,9 +45,11 @@
             font-family: 'Poppins', sans-serif; /* Poppins*/
         }
 
-        a {color: black; text-decoration: none;}
+        a {color: black; text-decoration: none; }
+        .title-right a {letter-spacing: 2px;}
 
-        .main-menu {
+
+        .main-menu, .menu-list-top {
             display: flex; /* or inline-flex*/
             justify-content: flex-start;
             align-items: center; /*(align on horizontal line or axis) */
@@ -131,6 +133,50 @@
         .bottom-main:hover {
             text-decoration: underline;
         }
+
+        .dots {display: none;}
+
+        .dots:focus + .menu-list-top {
+                display: block;
+        }
+            .dots:hover + .menu-list-top {
+                display: block;
+            }
+
+        @media screen and (max-width: 960px) {
+                    .title-right a {
+                        font-size: 1.2rem;
+                        letter-spacing: 2px;
+                    }
+
+                    .menu-list-top {
+                        display: none;
+                    }
+
+                    .menu-list-bot {
+                        font-size: 1rem;
+                    }
+
+                    .title-right {
+                        margin: auto;
+                    }
+
+                    .dots {
+                        display: block;
+                        position: absolute;
+                    }
+
+                    .poster {
+                        padding: 20px; /* Add padding */
+                        width: 1000px; /* poster size */
+                        max-width: 100%;
+                        box-sizing: border-box
+                    }
+
+                    .game-discription {
+                        font-size: 1rem;
+                    }
+                }
     </style>
 
 </head>
@@ -138,7 +184,7 @@
     <nav class="navbar">
         <div class="main-menu">
 
-            <ul class="main-menu menu-list">
+            <ul class="menu-list-top">
                 <li> <a href="Index.html">HOME</a></li>
                 <li> <a href="Index.html">PRIVACY-POLICY</a></li>
                 <li> <a href="Index.html">CONTACT</a></li>
@@ -148,6 +194,12 @@
                 <a href="">FROZEN DREAMS</a>
                 <a href="Index.html" style="display: none;"> <img src="images/Frozen Dreams logo translucent.png" width="50" alt="logo"></a>
             </div>
+
+            <div class="dots">
+                <a href="#" id="toggle-menu"> <img src="images/dots.png" width="50" alt="dots"></a>
+            </div>
+
+
         </div>
 
 
@@ -239,7 +291,7 @@
 
         <div class="main-menu foott">
 
-            <ul class="main-menu menu-list">
+            <ul class="main-menu menu-list-bot">
                 <li class="bottom-main"> <a href="Index.html">HOME</a></li>
                 <li class="bottom-main"> <a href="Index.html">PRIVACY-POLICY</a></li>
                 <li class="bottom-main"> <a href="Index.html">CONTACT</a></li>
@@ -255,5 +307,62 @@
 
     </footer>
 
+
+    <script>
+        // Get the elements
+        const toggleButton = document.getElementById('toggle-menu');
+        const menu = document.querySelector('.menu-list-top');
+        const titleRight = document.querySelector('.title-right'); // Select title-right
+        const allContent = document.body.children; // Get all children of body
+
+        // Add a click event listener to the dots
+        toggleButton.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent the default action of the link
+
+            // Hide the title-right element
+            if (titleRight) {
+                titleRight.style.display = 'none'; // Hide the title-right
+            }
+
+            // Show the menu
+            menu.style.display = 'block'; // Show the menu
+
+            // Center the menu
+            menu.style.position = 'fixed'; // Change to fixed positioning
+            menu.style.top = '50%'; // Center vertically
+            menu.style.left = '50%'; // Center horizontally
+            menu.style.transform = 'translate(-50%, -50%)'; // Offset to center
+
+            // Add padding, increase font size, and set gap using flex
+            menu.style.padding = '20px'; // Add padding (adjust as needed)
+            menu.style.fontSize = '32px'; // Increase font size (adjust as needed)
+            menu.style.display = 'flex'; // Use flexbox layout
+            menu.style.flexDirection = 'column'; // Stack items vertically
+            menu.style.alignItems = 'center'; // Center items horizontally
+            menu.style.gap = '40px'; // Set gap between items (adjust as needed)
+
+            // Style the list items
+            const listItems = menu.querySelectorAll('li'); // Select all list items
+            listItems.forEach(item => {
+                item.style.display = 'flex'; // Use flex for list items
+                item.style.justifyContent = 'center'; // Center content within list items
+                item.style.width = '100%'; // Make sure items take full width
+                item.style.textAlign = 'center'; // Center text within the item
+            });
+
+            // Hide all elements except for .menu-list-top, .dots, .navbar, and .main-menu
+            for (let i = 0; i < allContent.length; i++) {
+                const item = allContent[i];
+                if (!item.classList.contains('menu-list-top') &&
+                    !item.classList.contains('dots') &&
+                    !item.classList.contains('navbar') &&
+                    !item.classList.contains('main-menu')) {
+                    item.style.display = 'none'; // Hide the element
+                }
+            }
+        });
+
+
+    </script>
 </body>
 </html>
