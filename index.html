@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Frozen Dreams</title>
-    
+
     <link rel="icon" href="images/logo32x32.jpg" type="image/jpeg" />
 
-    <link rel="stylesheet" href="css/Style.css" />
+    <!-- <link rel="stylesheet" href="css/Style.css" />  -->
 
     <style>
         @font-face {
@@ -16,39 +16,46 @@
             src: url('fonts/Poppins-Light.ttf') format('truetype');
             font-weight: 300;
         }
-            @font-face {
-                font-family: 'Poppins';
-                src: url('fonts/Poppins-regular.ttf') format('truetype');
-                font-weight: 400;
-            }
 
-            @font-face {
-                font-family: 'Poppins';
-                src: url('fonts/Poppins-Medium.ttf') format('truetype');
-                font-weight: 500;
-            }
+        @font-face {
+            font-family: 'Poppins';
+            src: url('fonts/Poppins-regular.ttf') format('truetype');
+            font-weight: 400;
+        }
 
-
-            @font-face {
-                font-family: 'Poppins';
-                src: url('fonts/Poppins-SemiBold.ttf') format('truetype');
-                font-weight: 600;
-            }
+        @font-face {
+            font-family: 'Poppins';
+            src: url('fonts/Poppins-Medium.ttf') format('truetype');
+            font-weight: 500;
+        }
 
 
-            @font-face {
-                font-family: 'Poppins';
-                src: url('fonts/Poppins-bold.ttf') format('truetype');
-                font-weight: 700;
-            }
+        @font-face {
+            font-family: 'Poppins';
+            src: url('fonts/Poppins-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+        }
 
-            body {
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('fonts/Poppins-bold.ttf') format('truetype');
+            font-weight: 700;
+        }
+
+        body {
             background-color: rgb(222, 222, 222);
             font-family: 'Poppins', sans-serif; /* Poppins*/
         }
 
-        a {color: black; text-decoration: none; }
-        .title-right a {letter-spacing: 2px;}
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .title-right a {
+            letter-spacing: 2px;
+        }
 
 
         .main-menu, .menu-list-top {
@@ -64,6 +71,10 @@
             Padding-left: 1rem;
         }
 
+        .top-main:hover {
+            text-decoration: underline;
+        }
+
         .title-right {
             margin-left: auto;
             padding-right: 2rem;
@@ -75,7 +86,10 @@
             gap: 1rem;
         }
 
-        h1 {font-size: 2.5rem;}
+        h1 {
+            font-size: 2.5rem;
+        }
+
         hr {
             width: 80%; /* Set the width of the line */
             margin: 20px auto; /* Center and add vertical spacing */
@@ -114,6 +128,7 @@
             max-width: 100%;
             box-sizing: border-box
         }
+
         .social-parent {
             display: flex; /* or inline-flex*/
             justify-content: center;
@@ -126,245 +141,262 @@
         }
 
         .foott {
-                justify-content: center;
-                padding: 3rem;
-                text-align: center;
-                font-size: 0.7rem;
-                text-decoration: inherit;
-            }
+            justify-content: center;
+            padding: 3rem;
+            text-align: center;
+            font-size: 0.7rem;
+            text-decoration: inherit;
+        }
+
         .bottom-main:hover {
             text-decoration: underline;
         }
 
-        .dots {display: none;}
-
-        .dots:focus + .menu-list-top {
-                display: block;
+        .dots {
+            display: none;
+            padding-top: 0.5rem;
         }
+
+            .dots:focus + .menu-list-top {
+                display: block;
+            }
+
             .dots:hover + .menu-list-top {
                 display: block;
             }
 
-        @media screen and (max-width: 900px) {
-                    .title-right a {
-                        font-size: 1.2rem;
-                        letter-spacing: 2px;
-                    }
+        @media screen and (max-width: 960px) {
+            .title-right a {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
 
-                    .menu-list-top {
-                        display: none;
-                    }
+            .menu-list-top {
+                display: none;
+                width: 100%;
+            }
 
-                    .menu-list-bot {
-                        font-size: 1rem;
-                    }
+            .menu-list-bot {
+                font-size: 0.8rem;
+            }
 
-                    .title-right {
-                        margin: auto;
-                    }
+            .title-right {
+                margin: auto;
+            }
 
-                    .dots {
-                        display: block;
-                        position: absolute;
-                    }
+            .dots {
+                display: flex;
+                position: absolute;
+            }
 
-                    .poster {
-                        padding: 20px; /* Add padding */
-                        width: 1000px; /* poster size */
-                        max-width: 100%;
-                        box-sizing: border-box
-                    }
+            .poster {
+                padding: 15px; /* Add padding */
+                width: 1000px; /* poster size */
+                max-width: 100%;
+                box-sizing: border-box
+            }
 
-                    .game-discription {
-                        font-size: 1rem;
-                    }
-                }
+            .game-discription {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .btnn {
+                padding: 1rem 1rem;
+            }
+        }
     </style>
 
 </head>
-<body>
-    <nav class="navbar">
-        <div class="main-menu">
+    <body>
+        <nav class="navbar">
+            <div class="main-menu">
 
-            <ul class="menu-list-top">
-                <li> <a href="index.html">HOME</a></li>
-                <li> <a href="index.html">PRIVACY-POLICY</a></li>
-                <li> <a href="index.html">CONTACT</a></li>
-            </ul>
+                <ul class="menu-list-top">
+                    <li top-main> <a href="index.html">HOME</a></li>
+                    <li top-main> <a href="index.html">PRIVACY-POLICY</a></li>
+                    <li top-main> <a href="index.html">CONTACT</a></li>
+                </ul>
 
-            <div class="title-right">
-                <a href="">FROZEN DREAMS</a>
-                <a href="index.html" style="display: none;"> <img src="images/Frozen Dreams logo translucent.png" width="50" alt="logo"></a>
+                <div class="title-right">
+                    <a href="">FROZEN DREAMS</a>
+                    <a href="index.html" style="display: none;"> <img src="images/Frozen Dreams logo translucent.png" width="50" alt="logo"></a>
+                </div>
+
+                <div class="dots">
+                    <a href="#" id="toggle-menu"> <img src="images/dots.png" width="35" alt="dots"></a>
+                </div>
+
+
             </div>
 
-            <div class="dots">
-                <a href="#" id="toggle-menu"> <img src="images/dots.png" width="50" alt="dots"></a>
+
+        </nav>
+
+        <div id="Mini Golf Aeons">
+            <div class="game-titles">
+                <h1>Mini Golf Aeons</h1>
+                <img src="images/swamp.jpg" class="poster" alt="Mini Golf Aeons poster">
+
+                <div class="game-discription">
+                    <p>
+                        Experience the ultimate mini-golf adventure! Navigate through desert, encounter prehistoric creatures, and brave the frozen icebergs of Antarctica, all with stunning courses based on real-life greens and precise physics. Enjoy solo or multiplayer modes with friends for a fun-filled VR experience.
+                    </p>
+                </div>
+                <div>
+                    <a href="https://store.steampowered.com/app/2335910/Mini_Golf_Aeons/" target="_blank" class="btnn">STEAM STORE</a>
+                    <a href="https://www.meta.com/experiences/mini-golf-aeons/4881013271998328/" target="_blank" class="btnn">QUEST STORE</a>
+                </div>
+                <hr>
             </div>
-
-
         </div>
 
 
-    </nav>
 
-    <div id="Mini Golf Aeons">
-        <div class="game-titles">
-            <h1>Mini Golf Aeons</h1>
-            <img src="images/swamp.jpg" class="poster" alt="Mini Golf Aeons poster">
+        <div id="Legendary Hunter VR">
+            <div class="game-titles">
+                <h1>Legendary Hunter VR</h1>
+                <img src="images/LHposter.jpg" class="poster" alt="Legendary Hunter VR poster">
 
-            <div class="game-discription">
+                <div class="game-discription">
+                    <p>
+                        Legendary Hunter VR is a VR duck hunting game inspired by the old classic NES game Duck Hunt. Hunt Duck during the day time while surviving vicious crow attacks. And survive the wolves and the crocodiles at night. Enjoy the day/night cycles with dynamic weather and atmospheric surround sound.
+                    </p>
+                </div>
+                <div>
+                    <a href="https://store.steampowered.com/app/642170/Legendary_Hunter_VR/" target="_blank" class="btnn">STEAM STORE</a>
+                    <a href="https://www.meta.com/experiences/legendary-hunter-vr/3607072296057870/" target="_blank" class="btnn">QUEST STORE</a>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        <div id="Golf Pool VR">
+            <div class="game-titles">
+                <h1>Golf Pool VR</h1>
+                <img src="images/golfpoolposter.jpg" class="poster" alt="Golf Pool VR poster">
+
+                <div class="game-discription">
+                    <p>
+                        Golf Pool VR is a unique game that combines the challenge of Golf with the rules of the 8-ball Pool (Blackball)! Set in various beautiful and physically realistic environments. GolfPoolVR is a competitive and fun game you can play solo or with friends.
+                    </p>
+                </div>
+                <div>
+                    <a href="https://store.steampowered.com/app/1008700/Golf_Pool_VR/" target="_blank" class="btnn">STEAM STORE</a>
+                    <a href="https://www.meta.com/experiences/golf-pool-vr/3878635332217919/" target="_blank" class="btnn">QUEST STORE</a>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        <div id="Stardust VR">
+            <div class="game-titles">
+                <h1>Stardust VR</h1>
+                <img src="images/SDposter.png" class="poster" style="width: 440px" ; alt="Stardust VR poster">
+
+                <div class="game-discription">
+                    <p>
+                        Stardust VR is a VR action-relaxation game inspired by the classic Space Invaders arcade, Set in a relaxing and charming world with Binaural 3d sound. Play solo, co-op, or PvP with a friend as you shoot, dodge, and create black-holes along your way to the top of the world leaderboard.
+                    </p>
+                </div>
+                <div>
+                    <a href="https://store.steampowered.com/app/820530/Stardust_VR/" target="_blank" class="btnn">STEAM STORE</a>
+                    <a href="https://www.meta.com/experiences/stardust-vr/3801166996636348/" target="_blank" class="btnn">QUEST STORE</a>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <footer>
+
+            <div class="social-parent">
+                <a href="https://www.facebook.com/FrozenDreamsStudio" target="_blank" class="social"> <img src="images/facebook.svg" width="25" alt="facebook"></a>
+                <a href="https://x.com/Frozen___Dreams" target="_blank" class="social"> <img src="images/twitter.svg" width="25" alt="facebook"></a>
+            </div>
+
+
+            <div class="main-menu foott">
+
+                <ul class="main-menu menu-list-bot">
+                    <li class="bottom-main"> <a href="index.html">HOME</a></li>
+                    <li class="bottom-main"> <a href="index.html">PRIVACY-POLICY</a></li>
+                    <li class="bottom-main"> <a href="index.html">CONTACT</a></li>
+                </ul>
+
+            </div>
+
+            <div class="foott">
                 <p>
-                    Experience the ultimate mini-golf adventure! Navigate through desert, encounter prehistoric creatures, and brave the frozen icebergs of Antarctica, all with stunning courses based on real-life greens and precise physics. Enjoy solo or multiplayer modes with friends for a fun-filled VR experience.
+                    © 2024  Frozen Dreams Studio. All rights reserved.
                 </p>
             </div>
-            <div>
-                <a href="https://store.steampowered.com/app/2335910/Mini_Golf_Aeons/" target="_blank" class="btnn">STEAM STORE</a>
-                <a href="https://www.meta.com/experiences/mini-golf-aeons/4881013271998328/" target="_blank" class="btnn">QUEST STORE</a>
-            </div>
-            <hr>
-        </div>
-    </div>
+
+        </footer>
 
 
-
-    <div id="Legendary Hunter VR">
-        <div class="game-titles">
-            <h1>Legendary Hunter VR</h1>
-            <img src="images/LHposter.jpg" class="poster" alt="Legendary Hunter VR poster">
-
-            <div class="game-discription">
-                <p>
-                    Legendary Hunter VR is a VR duck hunting game inspired by the old classic NES game Duck Hunt. Hunt Duck during the day time while surviving vicious crow attacks. And survive the wolves and the crocodiles at night. Enjoy the day/night cycles with dynamic weather and atmospheric surround sound.
-                </p>
-            </div>
-            <div>
-                <a href="https://store.steampowered.com/app/642170/Legendary_Hunter_VR/" target="_blank" class="btnn">STEAM STORE</a>
-                <a href="https://www.meta.com/experiences/legendary-hunter-vr/3607072296057870/" target="_blank" class="btnn">QUEST STORE</a>
-            </div>
-            <hr>
-        </div>
-    </div>
+        <script>
+            // Get the elements
+            const toggleButton = document.getElementById('toggle-menu');
+            const menu = document.querySelector('.menu-list-top');
+            const titleRight = document.querySelector('.title-right'); // Select title-right
+            const allContent = document.body.children; // Get all children of body
+            const dots = document.querySelector('.dots');
+            const bottommain = document.querySelector('.bottom-main');
 
 
-    <div id="Golf Pool VR">
-        <div class="game-titles">
-            <h1>Golf Pool VR</h1>
-            <img src="images/golfpoolposter.jpg" class="poster" alt="Golf Pool VR poster">
+            // Add a click event listener to the dots
+            toggleButton.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent the default action of the link
 
-            <div class="game-discription">
-                <p>
-                    Golf Pool VR is a unique game that combines the challenge of Golf with the rules of the 8-ball Pool (Blackball)! Set in various beautiful and physically realistic environments. GolfPoolVR is a competitive and fun game you can play solo or with friends.
-                </p>
-            </div>
-            <div>
-                <a href="https://store.steampowered.com/app/1008700/Golf_Pool_VR/" target="_blank" class="btnn">STEAM STORE</a>
-                <a href="https://www.meta.com/experiences/golf-pool-vr/3878635332217919/" target="_blank" class="btnn">QUEST STORE</a>
-            </div>
-            <hr>
-        </div>
-    </div>
+                // Hide the title-right element
+                if (titleRight) {
+                    titleRight.style.display = 'none'; // Hide the title-right
+                }
 
+                // Show the menu
+                menu.style.display = 'block'; // Show the menu
 
-    <div id="Stardust VR">
-        <div class="game-titles">
-            <h1>Stardust VR</h1>
-            <img src="images/SDposter.png" class="poster" style="width: 340px" ; alt="Stardust VR poster">
+                // Center the menu
+                menu.style.position = 'fixed'; // Change to fixed positioning
+                menu.style.top = '50%'; // Center vertically
+                menu.style.left = '50%'; // Center horizontally
+                menu.style.transform = 'translate(-50%, -50%)'; // Offset to center
 
-            <div class="game-discription">
-                <p>
-                    Stardust VR is a VR action-relaxation game inspired by the classic Space Invaders arcade, Set in a relaxing and charming world with Binaural 3d sound. Play solo, co-op, or PvP with a friend as you shoot, dodge, and create black-holes along your way to the top of the world leaderboard.
-                </p>
-            </div>
-            <div>
-                <a href="https://store.steampowered.com/app/820530/Stardust_VR/" target="_blank" class="btnn">STEAM STORE</a>
-                <a href="https://www.meta.com/experiences/stardust-vr/3801166996636348/" target="_blank" class="btnn">QUEST STORE</a>
-            </div>
-            <hr>
-        </div>
-    </div>
+                // Add padding, increase font size, and set gap using flex
+                menu.style.padding = '20px'; // Add padding (adjust as needed)
+                menu.style.fontSize = '32px'; // Increase font size (adjust as needed)
+                menu.style.display = 'flex'; // Use flexbox layout
+                menu.style.flexDirection = 'column'; // Stack items vertically
+                menu.style.alignItems = 'center'; // Center items horizontally
+                menu.style.gap = '40px'; // Set gap between items (adjust as needed)
 
-    <footer>
+                dots.style.paddingTop = '2rem';
+                bottommain.style.fontSize = '1rem';
 
-        <div class="social-parent">
-            <a href="https://www.facebook.com/FrozenDreamsStudio" target="_blank" class="social"> <img src="images/facebook.svg" width="25" alt="facebook"></a>
-            <a href="https://x.com/Frozen___Dreams" target="_blank" class="social"> <img src="images/twitter.svg" width="25" alt="facebook"></a>
-        </div>
+                // Style the list items
+                const listItems = menu.querySelectorAll('li'); // Select all list items
+                listItems.forEach(item => {
+                    item.style.display = 'flex'; // Use flex for list items
+                    item.style.justifyContent = 'center'; // Center content within list items
+                    item.style.width = '100%'; // Make sure items take full width
+                    item.style.textAlign = 'center'; // Center text within the item
+                });
 
-
-        <div class="main-menu foott">
-
-            <ul class="main-menu menu-list-bot">
-                <li class="bottom-main"> <a href="index.html">HOME</a></li>
-                <li class="bottom-main"> <a href="index.html">PRIVACY-POLICY</a></li>
-                <li class="bottom-main"> <a href="index.html">CONTACT</a></li>
-            </ul>
-
-        </div>
-
-        <div class="foott">
-            <p>
-                © 2024  Frozen Dreams Studio. All rights reserved.
-            </p>
-        </div>
-
-    </footer>
-
-
-    <script>
-        // Get the elements
-        const toggleButton = document.getElementById('toggle-menu');
-        const menu = document.querySelector('.menu-list-top');
-        const titleRight = document.querySelector('.title-right'); // Select title-right
-        const allContent = document.body.children; // Get all children of body
-
-        // Add a click event listener to the dots
-        toggleButton.addEventListener('click', function (e) {
-            e.preventDefault(); // Prevent the default action of the link
-
-            // Hide the title-right element
-            if (titleRight) {
-                titleRight.style.display = 'none'; // Hide the title-right
-            }
-
-            // Show the menu
-            menu.style.display = 'block'; // Show the menu
-
-            // Center the menu
-            menu.style.position = 'fixed'; // Change to fixed positioning
-            menu.style.top = '50%'; // Center vertically
-            menu.style.left = '50%'; // Center horizontally
-            menu.style.transform = 'translate(-50%, -50%)'; // Offset to center
-
-            // Add padding, increase font size, and set gap using flex
-            menu.style.padding = '20px'; // Add padding (adjust as needed)
-            menu.style.fontSize = '32px'; // Increase font size (adjust as needed)
-            menu.style.display = 'flex'; // Use flexbox layout
-            menu.style.flexDirection = 'column'; // Stack items vertically
-            menu.style.alignItems = 'center'; // Center items horizontally
-            menu.style.gap = '40px'; // Set gap between items (adjust as needed)
-
-            // Style the list items
-            const listItems = menu.querySelectorAll('li'); // Select all list items
-            listItems.forEach(item => {
-                item.style.display = 'flex'; // Use flex for list items
-                item.style.justifyContent = 'center'; // Center content within list items
-                item.style.width = '100%'; // Make sure items take full width
-                item.style.textAlign = 'center'; // Center text within the item
+                // Hide all elements except for .menu-list-top, .dots, .navbar, and .main-menu
+                for (let i = 0; i < allContent.length; i++) {
+                    const item = allContent[i];
+                    if (!item.classList.contains('menu-list-top') &&
+                        !item.classList.contains('dots') &&
+                        !item.classList.contains('navbar') &&
+                        !item.classList.contains('main-menu')) {
+                        item.style.display = 'none'; // Hide the element
+                    }
+                }
             });
 
-            // Hide all elements except for .menu-list-top, .dots, .navbar, and .main-menu
-            for (let i = 0; i < allContent.length; i++) {
-                const item = allContent[i];
-                if (!item.classList.contains('menu-list-top') &&
-                    !item.classList.contains('dots') &&
-                    !item.classList.contains('navbar') &&
-                    !item.classList.contains('main-menu')) {
-                    item.style.display = 'none'; // Hide the element
-                }
-            }
-        });
 
-
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
