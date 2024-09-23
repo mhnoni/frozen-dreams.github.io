@@ -1,0 +1,491 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Frozen Dreams</title>
+
+    <link rel="icon" href="images/logo32x32.jpg" type="image/jpeg" />
+
+    <!-- <link rel="stylesheet" href="css/Style.css" />  -->
+
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            src: url('fonts/Poppins-Light.ttf') format('truetype');
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('fonts/Poppins-regular.ttf') format('truetype');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('fonts/Poppins-Medium.ttf') format('truetype');
+            font-weight: 500;
+        }
+
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('fonts/Poppins-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+        p {
+            font-size: 1rem;
+        }
+
+        span {
+            font-size: 0.8rem;
+        }
+        body {
+            background-color: rgb(222, 222, 222);
+            font-family: 'Poppins', sans-serif; /* Poppins*/
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .title-right a {
+            letter-spacing: 2px;
+        }
+
+
+        .top-main a {
+                padding: 10px;
+                text-decoration: none;
+                color: black;
+         }
+
+
+        .main-menu, .menu-list-top {
+            display: flex; /* or inline-flex*/
+            justify-content: flex-start;
+            align-items: center; /*(align on horizontal line or axis) */
+            list-style: none;
+            padding: 0;
+            gap: 2rem;
+            /* list-style: none; */
+            font-weight: 500;
+            font-size: 1.2rem;
+            Padding-left: 1rem;
+            margin: 0;
+        }
+
+        /* drop down menu start*/
+
+        .dropdown {position: relative;}
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            list-style: none;
+            padding: 0;
+            padding-top: 5px;
+            background-color: rgb(222, 222, 222);
+            box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.4);
+            min-width: 250px;
+            z-index: 10;
+
+        }
+
+        .dropdown-menu li:hover {
+                    background-color: rgb(180, 180, 180); /* Background color on hover */
+                }
+
+        .dropdown-menu li a {
+                    display: block;
+         }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* drop down menu end*/
+
+        .menu-list-top li a {
+                position: relative;
+                color: black;
+                padding-bottom: 4px;
+            }
+
+                .menu-list-top li a::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 2.5px;
+                    background-color: black;
+                    transform: scaleX(1); /* Start with no visible underline */
+                    transform-origin: left; /* The line will scale from the left */
+                    transition: transform 0.4s ease;
+                }
+
+                .menu-list-top li a:hover::after {
+                    transform: scaleX(0); /* On hover, the underline grows from left to right */
+                    transform-origin: right;
+                }
+
+
+        .top-main:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 2.5px;
+        }
+
+        .title-right {
+            margin-left: auto;
+            padding-right: 2rem;
+            color: black;
+            font-weight: 600;
+            font-size: 1.7rem;
+            align-items: center;
+            display: flex;
+            gap: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        hr {
+            width: 80%; /* Set the width of the line */
+            margin: 20px auto; /* Center and add vertical spacing */
+            border: 1px solid black; /* Line style */
+        }
+
+        .game-titles {
+            text-align: center;
+            padding-top: 3rem;
+        }
+
+        .game-discription {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px; /* Maximum width of the container */
+            margin: 0 auto; /* Center the container horizontally */
+            padding: 20px; /* Optional: Add padding around the text */
+            text-align: left;
+        }
+
+      
+        .btnn {
+            display: inline-block;
+            border-radius: 20px;
+            border: 2px solid black;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .btnn::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                background-color: black; /* Color for the hover square */
+                transition: height 0.3s ease;
+            }
+
+            .btnn:hover::after {
+                width: 50%; /* Full width of the button */
+                height: 8px; /* Adjust height to your preference */
+            }
+
+
+        .poster {
+            padding: 40px; /* Add padding */
+            width: 1000px; /* poster size */
+            max-width: 100%;
+            box-sizing: border-box;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.7s ease-in; /* Fade-in transition over 1 second */
+        }
+            .poster.visible {
+                opacity: 1; /* Fully visible once loaded */
+            }
+
+        .social-parent {
+            display: flex; /* or inline-flex*/
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+
+            .social:hover {
+            filter: opacity(0.7);
+        }
+
+        .foott {
+            justify-content: center;
+            padding: 3rem;
+            text-align: center;
+            font-size: 0.7rem;
+            margin-left: 25px;
+        }
+
+        .bottom-main:hover {
+            text-decoration: underline;
+        }
+
+        .dots {
+            display: none;
+            padding-top: 0.5rem;
+        }
+
+            .dots:focus + .menu-list-top {
+                display: block;
+            }
+
+            .dots:hover + .menu-list-top {
+                display: block;
+            }
+
+
+
+
+        @media screen and (max-width: 960px) {
+
+
+            /* .dropdown-menu {
+                border: 5px solid #ccc;
+                margin-top: -5px;
+            } */
+
+            .foott {
+                margin-left: 0px;
+            }
+
+
+            .title-right a {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+
+            .menu-list-top {
+                display: none;
+                width: 100%;
+            }
+
+            .menu-list-bot {
+                font-size: 0.7rem;
+                gap: 0.7rem;
+            }
+
+            .title-right {
+                margin: auto;
+            }
+
+            .dots {
+                display: flex;
+                position: absolute;
+            }
+
+            .poster {
+                padding: 15px; /* Add padding */
+                width: 1000px; /* poster size */
+                max-width: 100%;
+                box-sizing: border-box
+            }
+
+            .game-discription {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .btnn {
+                padding: 1rem 1rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="main-menu">
+
+            <ul class="menu-list-top">
+                <li top-main> <a href="index.html">HOME</a></li>
+                <li class="top-main dropdown">
+                    <a href="index.html">Games</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#Mini Golf Aeons">Mini Golf Aeons</a></li>
+                        <li><a href="index.html#Legendary Hunter VR">Legendary Hunter VR</a></li>
+                        <li><a href="index.html#Golf Pool VR">Golf Pool VR</a></li>
+                        <li><a href="index.html#Stardust VR">Stardust VR</a></li>
+
+                    </ul>
+                </li>
+                <li top-main> <a href="privacy-policy.html">PRIVACY-POLICY</a></li>
+                <li top-main> <a href="contact.html">CONTACT</a></li>
+            </ul>
+
+            <div class="title-right">
+                <a href="">FROZEN DREAMS</a>
+                <a href="index.html" style="display: none;"> <img src="images/Frozen Dreams logo translucent.png" width="50" alt="logo"></a>
+            </div>
+
+            <div class="dots">
+                <a href="#" id="toggle-menu"> <img src="images/dots.png" width="35" alt="dots"></a>
+            </div>
+
+
+        </div>
+
+
+    </nav>
+
+
+    <div>
+        <div class="game-titles">
+            <h1>CONTACT</h1>
+
+            <div class="game-discription">
+                <p><strong>CONTACT US</strong></p>
+                <p>If you have any questions, do not hesitate to contact us <strong>skyislimit2017@gmail.com</strong></p>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+
+    <footer>
+
+        <div class="social-parent">
+            <a href="https://www.facebook.com/FrozenDreamsStudio" target="_blank" class="social"> <img src="images/facebook.svg" width="25" alt="facebook"></a>
+            <a href="https://x.com/Frozen___Dreams" target="_blank" class="social"> <img src="images/twitter.svg" width="25" alt="facebook"></a>
+        </div>
+
+
+        <div class="main-menu foott">
+
+            <ul class="main-menu menu-list-bot">
+                <li class="bottom-main"> <a href="index.html">HOME</a></li>
+                <li class="bottom-main"> <a href="privacy-policy.html">PRIVACY-POLICY</a></li>
+                <li class="bottom-main"> <a href="contact.html">CONTACT</a></li>
+            </ul>
+
+        </div>
+
+        <div class="foott">
+            <p>
+                © 2024  Frozen Dreams Studio. All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+
+
+    <script>
+        // menu for mobile, Get the elements
+        const toggleButton = document.getElementById('toggle-menu');
+        const menu = document.querySelector('.menu-list-top');
+        const titleRight = document.querySelector('.title-right'); // Select title-right
+        const allContent = document.body.children; // Get all children of body
+        const dots = document.querySelector('.dots');
+        const bottommain = document.querySelector('.bottom-main');
+        const dropdown = document.querySelector('.dropdown');
+
+
+        // Add a click event listener to the dots
+        toggleButton.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent the default action of the link
+
+            // Hide the title-right element
+            if (titleRight) {
+                titleRight.style.display = 'none'; // Hide the title-right
+            }
+
+            // Show the menu
+            menu.style.display = 'block'; // Show the menu
+
+
+
+            // Center the menu
+            menu.style.position = 'fixed'; // Change to fixed positioning
+            menu.style.top = '50%'; // Center vertically
+            menu.style.left = '50%'; // Center horizontally
+            menu.style.transform = 'translate(-50%, -50%)'; // Offset to center
+
+            // Add padding, increase font size, and set gap using flex
+            menu.style.padding = '20px'; // Add padding (adjust as needed)
+            menu.style.fontSize = '32px'; // Increase font size (adjust as needed)
+            menu.style.display = 'flex'; // Use flexbox layout
+            menu.style.flexDirection = 'column'; // Stack items vertically
+            menu.style.alignItems = 'center'; // Center items horizontally
+            menu.style.gap = '40px'; // Set gap between items (adjust as needed)
+
+            dots.style.paddingTop = '2rem';
+            bottommain.style.fontSize = '1rem';
+
+            // Style the list items
+            const listItems = menu.querySelectorAll('li'); // Select all list items
+            listItems.forEach(item => {
+                item.style.display = 'flex'; // Use flex for list items
+                item.style.justifyContent = 'center'; // Center content within list items
+                item.style.width = '100%'; // Make sure items take full width
+                item.style.textAlign = 'center'; // Center text within the item
+            });
+
+            // Hide all elements except for .menu-list-top, .dots, .navbar, and .main-menu
+            for (let i = 0; i < allContent.length; i++) {
+                const item = allContent[i];
+                if (!item.classList.contains('menu-list-top') &&
+                    !item.classList.contains('dots') &&
+                    !item.classList.contains('navbar') &&
+                    !item.classList.contains('main-menu')) {
+                    item.style.display = 'none'; // Hide the element
+                }
+            }
+            dropdown.style.display = 'none'; // hide games
+
+        });
+
+        // fade in for posters
+        function fadeInOnScroll(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('visible'); // Add visible class to fade in
+                    observer.unobserve(img); // Stop observing once it's visible
+                }
+            });
+        }
+
+        // Create an Intersection Observer
+        const observer = new IntersectionObserver(fadeInOnScroll);
+
+        // Add fade to images
+        document.addEventListener("DOMContentLoaded", function () {
+            const posters = document.querySelectorAll('.poster'); // Select images with class "poster"
+
+            posters.forEach((img) => {
+                // Observe each poster image for scroll effect
+                observer.observe(img); // Start observing the image
+            });
+        });
+
+
+
+    </script>
+</body>
+    </html>
