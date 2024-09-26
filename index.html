@@ -54,12 +54,15 @@
             letter-spacing: 2px;
         }
 
-
+        .main-container {
+            width: 70%;
+            margin: 0 auto; /* This centers the div horizontally */
+        }
         .top-main a {
-                padding: 10px;
-                text-decoration: none;
-                color: black;
-         }
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
 
 
         .main-menu, .menu-list-top {
@@ -78,37 +81,58 @@
 
         /* drop down menu start*/
 
-        .dropdown {position: relative;}
+        .dropdown {
+            position: relative;
+        }
 
         .dropdown-menu {
-            display: none;
+
+            display: block;
             position: absolute;
-            top: 100%;
+            top: 90%;
             list-style: none;
             padding: 0;
-            padding-top: 5px;
-            background-color: rgb(222, 222, 222);
+            padding-top: 10px;
+            background-color: none;
             box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.4);
             min-width: 250px;
             z-index: 10;
-
+            opacity: 0; /* Invisible initially */
+            visibility: hidden; /* Hidden for the transition to work */
+            transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s 0.3s;
         }
 
-        .dropdown-menu li:hover {
-                    background-color: rgb(180, 180, 180); /* Background color on hover */
-                }
-
-        .dropdown-menu li a {
-                    display: block;
-         }
-
+        /* Show dropdown on hover */
         .dropdown:hover .dropdown-menu {
+            top: 25px; /* Slide down from top to under the title */
+            opacity: 1; /* Fade in */
+            visibility: visible; /* Make it visible */
+            transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s; /* Remove delay */
+
+        }
+        .dropdown-menu a {
             display: block;
+            background-color: rgb(222, 222, 222);
+            color: black;
+            height: 20px;
+            padding: 10px;
+            margin-bottom:0px;
+            height:30px;
+            text-decoration: none;
+
+            border: 1px solid #111;
+            border-radius: 1px;
         }
 
+            .dropdown-menu a:hover {
+                background-color: black;
+                color: white;
+                transition: 0.3s;
+            }
+        
         /* drop down menu end*/
 
-        .menu-list-top li a {
+            .menu-list-top li a {
                 position: relative;
                 color: black;
                 padding-bottom: 4px;
@@ -131,6 +155,10 @@
                     transform: scaleX(0); /* On hover, the underline grows from left to right */
                     transform-origin: right;
                 }
+
+        .dropdown-menu li a::after {
+            content: none; /* Ensure no underline is added for dropdown menu links */
+        }
 
 
         .top-main:hover {
@@ -240,20 +268,89 @@
             text-decoration: underline;
         }
 
-        .dots {
+       
+
+
+        /* Burger Button */
+        .burger-button {
             display: none;
-            padding-top: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1000;
         }
 
-            .dots:focus + .menu-list-top {
+            .burger-button .burger-line {
+                width: 30px;
+                height: 3px;
+                background: #333;
+                margin: 6px 0;
+            }
+
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 320px;
+            height: 100%;
+            z-index: 100;
+            background: rgb(222, 222, 222);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease-in-out;
+
+        }
+
+            .mobile-menu.active {
+                right: 0;
+            }
+
+            .mobile-menu li a {
+                width: 100%;
                 display: block;
             }
 
-            .dots:hover + .menu-list-top {
-                display: block;
+                .mobile-menu li a:hover {
+                background-color: black;
+                color: white;
             }
+
+
+
+            .mobile-menu ul {
+                margin-top: 100px;
+                padding-right: 10px;
+
+            }
+
+                .mobile-menu ul li {
+                    margin: 10px 0;
+                }
+
+                    .mobile-menu ul li a {
+                        font-size: 20px;
+                        transition: 0.3s;
+                    }
+
+                    .mobile-menu ul li ul {
+                        margin: 0;
+                        padding-left: 20px; /* Adjust padding as needed */
+                        list-style-type: none;
+                    }
 
         @media screen and (max-width: 960px) {
+
+            .main-container {
+                width: 100%;
+                margin: 0 auto; /* This centers the div horizontally */
+            }
+
+            .burger-button {
+                display: block;
+            }
+
 
             .foott {
                 margin-left: 0px;
@@ -264,11 +361,14 @@
                 border: 5px solid #ccc;
                 margin-top: -5px;
             } */
-            
-            
+
+
             .title-right a {
                 font-size: 1.2rem;
                 letter-spacing: 2px;
+                position: absolute; /* Allow positioning relative to the viewport */
+                left: 50%; /* Move the left edge to the center of the screen */
+                transform: translateX(-50%); /* Shift the element back by half its width to center it */
             }
 
             .menu-list-top {
@@ -285,10 +385,6 @@
                 margin: auto;
             }
 
-            .dots {
-                display: flex;
-                position: absolute;
-            }
 
             .poster {
                 padding: 15px; /* Add padding */
@@ -315,14 +411,13 @@
 
                 <ul class="menu-list-top">
                     <li top-main> <a href="index.html">HOME</a></li>
-                    <li class="top-main dropdown">
-                        <a href="index.html">Games</a>
+                    <li class="dropdown">
+                        <a href="#Mini Golf Aeons">Games</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#Mini Golf Aeons">Mini Golf Aeons</a></li>
-                            <li><a href="#Legendary Hunter VR">Legendary Hunter VR</a></li>
-                            <li><a href="#Golf Pool VR">Golf Pool VR</a></li>
-                            <li><a href="#Stardust VR">Stardust VR</a></li>
-
+                            <li><a href="index.html#Mini%20Golf%20Aeons">Mini Golf Aeons</a></li>
+                            <li><a href="index.html#Legendary%20Hunter%20VR">Legendary Hunter VR</a></li>
+                            <li><a href="index.html#Golf%20Pool%20VR">Golf Pool VR</a></li>
+                            <li><a href="index.html#Stardust%20VR">Stardust VR</a></li>
                         </ul>
                     </li>
                     <li top-main> <a href="privacy-policy.html">PRIVACY-POLICY</a></li>
@@ -334,92 +429,113 @@
                     <a href="index.html" style="display: none;"> <img src="images/Frozen Dreams logo translucent.png" width="50" alt="logo"></a>
                 </div>
 
-                <div class="dots">
-                    <a href="#" id="toggle-menu"> <img src="images/dots.png" width="35" alt="dots"></a>
-                </div>
+                <!-- Burger Button -->
 
+                <button class="burger-button">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </button>
+
+                <div class="mobile-menu">
+
+                    <ul>
+                        <li> <a href="index.html">HOME</a></li>
+                        <li><a href="#Mini Golf Aeons">Games</a>
+                            <ul class="dropdown-menu-mobile">
+                                <li><a href="index.html#Mini%20Golf%20Aeons">Mini Golf Aeons</a></li>
+                                <li><a href="index.html#Legendary%20Hunter%20VR">Legendary Hunter VR</a></li>
+                                <li><a href="index.html#Golf%20Pool%20VR">Golf Pool VR</a></li>
+                                <li><a href="index.html#Stardust%20VR">Stardust VR</a></li>
+
+                            </ul>
+                        </li>
+                        <li> <a href="privacy-policy.html">PRIVACY-POLICY</a></li>
+                        <li> <a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </div>
 
             </div>
 
 
         </nav>
+        <div class="main-container">
+            <div id="Mini Golf Aeons">
+                <div class="game-titles">
+                    <h1>Mini Golf Aeons</h1>
+                    <img src="images/swamp.jpg" class="poster" alt="Mini Golf Aeons poster">
 
-        <div id="Mini Golf Aeons">
-            <div class="game-titles">
-                <h1>Mini Golf Aeons</h1>
-                <img src="images/swamp.jpg" class="poster" alt="Mini Golf Aeons poster">
+                    <div class="game-discription">
+                        <p>
+                            Experience the ultimate mini-golf adventure! Navigate through desert, encounter prehistoric creatures, and brave the frozen icebergs of Antarctica, all with stunning courses based on real-life greens and precise physics. Enjoy solo or multiplayer modes with friends for a fun-filled VR experience.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://store.steampowered.com/app/2335910/Mini_Golf_Aeons/" target="_blank" class="btnn">STEAM STORE</a>
+                        <a href="https://www.meta.com/experiences/mini-golf-aeons/4881013271998328/" target="_blank" class="btnn">QUEST STORE</a>
+                    </div>
+                    <hr>
+                </div>
+            </div>
 
-                <div class="game-discription">
-                    <p>
-                        Experience the ultimate mini-golf adventure! Navigate through desert, encounter prehistoric creatures, and brave the frozen icebergs of Antarctica, all with stunning courses based on real-life greens and precise physics. Enjoy solo or multiplayer modes with friends for a fun-filled VR experience.
-                    </p>
+
+
+            <div id="Legendary Hunter VR">
+                <div class="game-titles">
+                    <h1>Legendary Hunter VR</h1>
+                    <img src="images/LHposter.jpg" class="poster" alt="Legendary Hunter VR poster">
+
+                    <div class="game-discription">
+                        <p>
+                            Legendary Hunter VR is a VR duck hunting game inspired by the old classic NES game Duck Hunt. Hunt Duck during the day time while surviving vicious crow attacks. And survive the wolves and the crocodiles at night. Enjoy the day/night cycles with dynamic weather and atmospheric surround sound.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://store.steampowered.com/app/642170/Legendary_Hunter_VR/" target="_blank" class="btnn">STEAM STORE</a>
+                        <a href="https://www.meta.com/experiences/legendary-hunter-vr/3607072296057870/" target="_blank" class="btnn">QUEST STORE</a>
+                    </div>
+                    <hr>
                 </div>
-                <div>
-                    <a href="https://store.steampowered.com/app/2335910/Mini_Golf_Aeons/" target="_blank" class="btnn">STEAM STORE</a>
-                    <a href="https://www.meta.com/experiences/mini-golf-aeons/4881013271998328/" target="_blank" class="btnn">QUEST STORE</a>
+            </div>
+
+
+            <div id="Golf Pool VR">
+                <div class="game-titles">
+                    <h1>Golf Pool VR</h1>
+                    <img src="images/golfpoolposter.jpg" class="poster" alt="Golf Pool VR poster">
+
+                    <div class="game-discription">
+                        <p>
+                            Golf Pool VR is a unique game that combines the challenge of Golf with the rules of the 8-ball Pool (Blackball)! Set in various beautiful and physically realistic environments. GolfPoolVR is a competitive and fun game you can play solo or with friends.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://store.steampowered.com/app/1008700/Golf_Pool_VR/" target="_blank" class="btnn">STEAM STORE</a>
+                        <a href="https://www.meta.com/experiences/golf-pool-vr/3878635332217919/" target="_blank" class="btnn">QUEST STORE</a>
+                    </div>
+                    <hr>
                 </div>
-                <hr>
+            </div>
+
+
+            <div id="Stardust VR">
+                <div class="game-titles">
+                    <h1>Stardust VR</h1>
+                    <img src="images/SDposter.png" class="poster" style="width: 440px" ; alt="Stardust VR poster">
+
+                    <div class="game-discription">
+                        <p>
+                            Stardust VR is a VR action-relaxation game inspired by the classic Space Invaders arcade, Set in a relaxing and charming world with Binaural 3d sound. Play solo, co-op, or PvP with a friend as you shoot, dodge, and create black-holes along your way to the top of the world leaderboard.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://store.steampowered.com/app/820530/Stardust_VR/" target="_blank" class="btnn">STEAM STORE</a>
+                        <a href="https://www.meta.com/experiences/stardust-vr/3801166996636348/" target="_blank" class="btnn">QUEST STORE</a>
+                    </div>
+                    <hr>
+                </div>
             </div>
         </div>
-
-
-
-        <div id="Legendary Hunter VR">
-            <div class="game-titles">
-                <h1>Legendary Hunter VR</h1>
-                <img src="images/LHposter.jpg" class="poster" alt="Legendary Hunter VR poster">
-
-                <div class="game-discription">
-                    <p>
-                        Legendary Hunter VR is a VR duck hunting game inspired by the old classic NES game Duck Hunt. Hunt Duck during the day time while surviving vicious crow attacks. And survive the wolves and the crocodiles at night. Enjoy the day/night cycles with dynamic weather and atmospheric surround sound.
-                    </p>
-                </div>
-                <div>
-                    <a href="https://store.steampowered.com/app/642170/Legendary_Hunter_VR/" target="_blank" class="btnn">STEAM STORE</a>
-                    <a href="https://www.meta.com/experiences/legendary-hunter-vr/3607072296057870/" target="_blank" class="btnn">QUEST STORE</a>
-                </div>
-                <hr>
-            </div>
-        </div>
-
-
-        <div id="Golf Pool VR">
-            <div class="game-titles">
-                <h1>Golf Pool VR</h1>
-                <img src="images/golfpoolposter.jpg" class="poster" alt="Golf Pool VR poster">
-
-                <div class="game-discription">
-                    <p>
-                        Golf Pool VR is a unique game that combines the challenge of Golf with the rules of the 8-ball Pool (Blackball)! Set in various beautiful and physically realistic environments. GolfPoolVR is a competitive and fun game you can play solo or with friends.
-                    </p>
-                </div>
-                <div>
-                    <a href="https://store.steampowered.com/app/1008700/Golf_Pool_VR/" target="_blank" class="btnn">STEAM STORE</a>
-                    <a href="https://www.meta.com/experiences/golf-pool-vr/3878635332217919/" target="_blank" class="btnn">QUEST STORE</a>
-                </div>
-                <hr>
-            </div>
-        </div>
-
-
-        <div id="Stardust VR">
-            <div class="game-titles">
-                <h1>Stardust VR</h1>
-                <img src="images/SDposter.png" class="poster" style="width: 440px" ; alt="Stardust VR poster">
-
-                <div class="game-discription">
-                    <p>
-                        Stardust VR is a VR action-relaxation game inspired by the classic Space Invaders arcade, Set in a relaxing and charming world with Binaural 3d sound. Play solo, co-op, or PvP with a friend as you shoot, dodge, and create black-holes along your way to the top of the world leaderboard.
-                    </p>
-                </div>
-                <div>
-                    <a href="https://store.steampowered.com/app/820530/Stardust_VR/" target="_blank" class="btnn">STEAM STORE</a>
-                    <a href="https://www.meta.com/experiences/stardust-vr/3801166996636348/" target="_blank" class="btnn">QUEST STORE</a>
-                </div>
-                <hr>
-            </div>
-        </div>
-
         <footer>
 
             <div class="social-parent">
@@ -448,69 +564,6 @@
 
 
         <script>
-            // menu for mobile, Get the elements
-            const toggleButton = document.getElementById('toggle-menu');
-            const menu = document.querySelector('.menu-list-top');
-            const titleRight = document.querySelector('.title-right'); // Select title-right
-            const allContent = document.body.children; // Get all children of body
-            const dots = document.querySelector('.dots');
-            const bottommain = document.querySelector('.bottom-main');
-            const dropdown = document.querySelector('.dropdown');
-
-
-            // Add a click event listener to the dots
-            toggleButton.addEventListener('click', function (e) {
-                e.preventDefault(); // Prevent the default action of the link
-
-                // Hide the title-right element
-                if (titleRight) {
-                    titleRight.style.display = 'none'; // Hide the title-right
-                }
-
-                // Show the menu
-                menu.style.display = 'block'; // Show the menu
-
-
-
-                // Center the menu
-                menu.style.position = 'fixed'; // Change to fixed positioning
-                menu.style.top = '50%'; // Center vertically
-                menu.style.left = '50%'; // Center horizontally
-                menu.style.transform = 'translate(-50%, -50%)'; // Offset to center
-
-                // Add padding, increase font size, and set gap using flex
-                menu.style.padding = '20px'; // Add padding (adjust as needed)
-                menu.style.fontSize = '32px'; // Increase font size (adjust as needed)
-                menu.style.display = 'flex'; // Use flexbox layout
-                menu.style.flexDirection = 'column'; // Stack items vertically
-                menu.style.alignItems = 'center'; // Center items horizontally
-                menu.style.gap = '40px'; // Set gap between items (adjust as needed)
-
-                dots.style.paddingTop = '2rem';
-                bottommain.style.fontSize = '1rem';
-
-                // Style the list items
-                const listItems = menu.querySelectorAll('li'); // Select all list items
-                listItems.forEach(item => {
-                    item.style.display = 'flex'; // Use flex for list items
-                    item.style.justifyContent = 'center'; // Center content within list items
-                    item.style.width = '100%'; // Make sure items take full width
-                    item.style.textAlign = 'center'; // Center text within the item
-                });
-
-                // Hide all elements except for .menu-list-top, .dots, .navbar, and .main-menu
-                for (let i = 0; i < allContent.length; i++) {
-                    const item = allContent[i];
-                    if (!item.classList.contains('menu-list-top') &&
-                        !item.classList.contains('dots') &&
-                        !item.classList.contains('navbar') &&
-                        !item.classList.contains('main-menu')) {
-                        item.style.display = 'none'; // Hide the element
-                    }
-                }
-                dropdown.style.display = 'none'; // hide games
-            
-            });
 
             // fade in for posters
             function fadeInOnScroll(entries, observer) {
@@ -536,6 +589,32 @@
                 });
             });
 
+            // Mobile Menu
+            document.addEventListener('DOMContentLoaded', () => {
+                const burgerButton = document.querySelector('.burger-button');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const menuItems = document.querySelectorAll('.mobile-menu li a'); // Select all the links
+
+                // Toggle mobile menu on burger button click
+                burgerButton.addEventListener('click', (e) => {
+                    mobileMenu.classList.toggle('active');
+                    e.stopPropagation(); // Prevent the document click event from firing when clicking on the burger button
+                });
+
+                // Hide mobile menu when any list item is clicked
+                menuItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active'); // Hide the menu
+                    });
+                });
+
+                // Hide mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !burgerButton.contains(e.target)) {
+                        mobileMenu.classList.remove('active'); // Hide the menu if clicked outside
+                    }
+                });
+            });
 
 
         </script>
